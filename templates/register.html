@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title> Index Page</title>
+    </head>
+    <body>
+        <div>
+            <h1> Registration page... </h1>
+
+            <form action="{{ url_for('register') }}" method="post">
+                
+                {% if message is defined and message %}
+                    <div> {{ message }} </div>
+                {% endif %}
+
+                    {{ form.username.label}}
+                    {{ form.username}} <br>
+                    {{ form.password.label}}
+                    {{ form.password }} <br>
+                    {{ form.confirm_password.label }}
+                    {{ form.confirm_password }} <br>
+                    {{ form.submit }} <br>
+
+            </form>
+            <p> Already Have An Account? <a href="{{ url_for('login') }}"> Login </a>
+            </p>
+        </div>
+    </body>
+</html>
