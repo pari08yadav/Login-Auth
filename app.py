@@ -36,8 +36,9 @@ class LoginForm(FlaskForm):
 
 @app.route('/home')
 def home():
-    if 'username' in session:
-        session['loggedin'] = True
+    if 'username' in session.keys():
+        # session['loggedin'] = True
+        print("session data type",type(session))
         username = session['username']
         msg = "You are loggedin Successfully!"
         return render_template('home.html',username=username, message=msg)
