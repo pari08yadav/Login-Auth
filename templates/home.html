@@ -6,7 +6,10 @@
         <h1> Welcome To Our Home Page... </h1>
         <h2> {% if message is defined and message %}
             <div>{{ message }} </div>
-            {% endif %}     
+            
+            <a href={{ url_for('logout') }}> <strong> logout </strong> </a>
+            {% endif %}  
+
         </h2>
         
     </body>

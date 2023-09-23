@@ -40,7 +40,7 @@ def home():
         session['loggedin'] = True
         username = session['username']
         msg = "You are loggedin Successfully!"
-        return render_template('home.html',message = msg, username = username )
+        return render_template('home.html',username=username, message=msg)
     else:
         return redirect(url_for('login'))
 
@@ -117,7 +117,7 @@ def register():
 def logout():
     session.pop('loggedin', None)
     session.pop('username', None)
-    return redirect(url_for('login'))
+    return render_template('logout.html')
      
 if __name__ == '__main__': 
     app.run(debug=True)
