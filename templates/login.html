@@ -6,18 +6,17 @@
     <body>
         <div>
             <h1> User Login Form </h1>
-            <form action="{{ url_for('login') }}" method="post">
+          <form action="{{ url_for('login') }}" method="post">
                 
                 {% if message is defined and message %}
-                    <div>  {{ message }} </div>
+                    <div>  <strong> {{ message }}  </strong> </div> <br> 
                 {% endif %}
 
                     {{ form.username.label}}
-                    {{ form.username}} <br>
+                    {{ form.username }} <br> <br>
                     {{ form.password.label}}
-                    {{ form.password }} <br>
-                    {{ form.confirm_password.label }}
-                    {{ form.confirm_password }} <br>
+                    {{ form.password }} <br> <br>
+                    
                     {{ form.submit }} <br> 
 
             </form>

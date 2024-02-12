@@ -1,9 +1,37 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title> Home Page </title>
-    </head>
-    <body>
+<body>
+
+
+
+<script>
+    function loadNames(){
+        let url = 'http://127.0.0.1:5000/name_list';
+
+        fetch(url)
+        .then(res => res.json())
+        .then(function(data){
+            
+            let final_data = "";
+            data.forEach(function(item){
+                final_data += "<li>Name: "+item.name+" &nbsp;&nbsp;&nbsp;   Education: "+item.education+"</li>";
+            });
+
+            document.getElementById("name_list").innerHTML = final_data
+            
+        }).catch(err => { throw err });
+
+    }
+
+    window.onload = function(){
+        loadNames();
+    }
+          
+</script>        
+ 
         <h1> Welcome To Our Home Page... </h1>
+        
+
         <h2> {% if message is defined and message %}
             <div>{{ message }} </div>
             
@@ -11,6 +39,12 @@
             {% endif %}  
 
         </h2>
+
+        <button type="button" onclick="loadNames();"> Reload Name </button>
+        <ul id="name_list">
+            
+        </ul>
         
-    </body>
-</html>
+</body>
+</html>        
+
