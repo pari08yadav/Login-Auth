@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, session, redirect, f
 import mysql.connector 
 
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "HELLOWORLD"
 
@@ -27,6 +28,7 @@ def create_post():
                 return jsonify({"message": "Content are required"}), 400
             
             cursor.execute("INSERT INTO posts (content) VALUES (%s)", [content])
+            # connection.commit()
             connection.commit()
             cursor.close()
             
@@ -35,9 +37,9 @@ def create_post():
             response['post'] = post
             return jsonify(response)           
 
-    except Exception as e:
+    except mysql.connector.Error as err:
         response["status"] = 400
-        response["message"] = "An error occured"
+        response["message"] = err
         return jsonify(response) 
 
 
